@@ -1,0 +1,105 @@
+import time
+
+class Operacoes:
+  def soma(x,y):
+    return x+y
+  def sub (x,y):
+    return x-y
+  def multp (x,y):
+    return x*y
+  def div (x,y):
+    return x/y
+  def raizQ (x):
+    return pow (x,0.5)
+  def exp (x,y):
+    return x**y
+
+digitacao= 'Digite s, se sim e n, se não.'
+saindo='Adios'
+resultado='Resultado:'
+
+def bemvindo():
+  print('Bem-vindo à Calculadora! Vamos brincar de matemática! 🤓')
+  time.sleep(1.5)
+
+def calculadora():
+  
+  operador= input('''informe a operação matemática
+  sendo: 
+  + = soma
+  - = subtração
+  / = divisão
+  * = multiplicação
+  r = raiz quadrada
+  ** = exponenciação''' + '\n')
+  
+  basico = {
+  '+': Operacoes.soma,
+  '-': Operacoes.sub,
+  '*': Operacoes.multp,
+  '/': Operacoes.div,
+  '**': Operacoes.exp    
+  }
+  
+  intermediário = {
+  'r': Operacoes.raizQ
+  }
+
+  if operador in basico:
+   numero1, numero2 = numeros_basico()
+   print(f'{resultado}', float(numero1), operador, float(numero2), "=", basico[operador](float(numero1), float(numero2)))
+   time.sleep(0.5)
+   novamente()
+  elif operador in intermediário:
+   numero3 = numeros_intermediários()
+   print('raiz de', float(numero3), '=', intermediário[operador](float(numero3)))
+   time.sleep(0.5)
+   novamente()
+  else: 
+    operadorNaoValido()
+
+def novamente():
+  denovo= input (f'''Gostaria de continuar calculando?
+{digitacao}''' + '\n')
+  
+  if denovo == 's':
+    calculadora()
+
+  if denovo == 'n':
+    print(f'{saindo}')
+
+def operadorNaoValido():
+  invalidez= input (f'''Operação inválida. Gostaria de tentar novamente?
+{digitacao}''' + '\n')
+
+  if invalidez == 's':
+   calculadora()
+  if invalidez == 'n':
+   print(f'{saindo}')
+
+def numeros_basico():
+    numero1= (input ('informe o primeiro número' + '\n'))
+    while not numero1.isdigit(): 
+     print('Digite apenas números!')
+     numero1= (input ('informe o primeiro número' + '\n'))
+     if numero1.isdigit():
+      break
+    numero2= (input ('informe o segundo número' + '\n'))
+    while not numero2.isdigit(): 
+     print('Digite apenas números!')
+     numero2= (input ('informe o primeiro número' + '\n'))
+     if numero2.isdigit():
+      break
+    return numero1,numero2  
+
+def numeros_intermediários():
+    numero3= (input ('informe o numero para cálculo da raíz quadrada' + '\n' ))
+    while not numero3.isdigit(): 
+     print('Digite apenas números!')
+     numero3= (input ('informe o numero para cálculo da raíz quadrada' + '\n'))
+     if numero3.isdigit():
+      break
+    return numero3    
+
+bemvindo()
+calculadora()
