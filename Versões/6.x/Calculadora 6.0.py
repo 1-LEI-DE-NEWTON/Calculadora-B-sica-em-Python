@@ -30,8 +30,8 @@ intermediário = {
 
 def stringsrapidas():
     digitacao= 'Digite s, se sim e n, se não.'
-    saindo='Adios'
-    resultado='Resultado:'
+    saindo= 'Adios'
+    resultado= 'Resultado:'
     return digitacao,saindo,resultado
 
 digitacao, saindo, resultado = stringsrapidas()
