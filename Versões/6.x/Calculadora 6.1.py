@@ -80,7 +80,7 @@ class Menu:
   def teste3(numero3): 
      while re.fullmatch(f'{regex}', numero3) is None: 
        print(f'{somente}')
-       Menu.matematica()
+       Menu.numeros_intermediários()
      return numero3   
 
   def numeros_basicos1():
